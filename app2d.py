@@ -15,9 +15,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Wyłączenie ostrzeżeń Matplotlib dotyczących wątków
-st.set_option('deprecation.showPyplotGlobalUse', False)
-
 # --- FUNKCJE POMOCNICZE (CAŁOŚĆ W MILIMETRACH [mm]) ---
 
 def parse_and_clean_sail_mm(df_full):
@@ -290,4 +287,4 @@ if orig_file and mod_file:
 
 else:
     # Komunikat startowy, gdy pliki nie zostały jeszcze wczytane
-    st.info("👈 Aby rozpocząć analizę, prześlij oba pliki CSV (Oryginalny oraz Zmodyfikowany w skali mm) w panelu bocznym po lewej stronie.")
+    st.info("👈 Aby rozpocząć analizę, prześlij oba pliki CSV (Oryginalny oraz Zmodyfikowany) w panelu bocznym po lewej stronie.")
