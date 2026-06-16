@@ -10,7 +10,7 @@ import re
 
 # --- USTAWIENIA STRONY STREAMLIT ---
 st.set_page_config(
-    page_title="Analizator Profili Żagli 49er / FX (Matplotlib mm)",
+    page_title="Analizator profili żagli 49er / FX",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -135,13 +135,13 @@ def analyze_profile_geometry_mm(df_data, chord_lengths):
 
 # --- INTERFEJS UŻYTKOWNIKA ---
 
-st.title("⛵ Aerodynamiczny Analizator i Komparator Żagli [Skala mm]")
+st.title("⛵ Analizator i komparator żagli 49er / FX 2D")
 st.markdown("Narzędzie dedykowane dla klas **49er** oraz **49er FX**. Porównuje dwa projekty żagli (Wizualizacja 3D Matplotlib) oraz oblicza parametry profili.")
 
 # Panel boczny - Przesyłanie plików
 st.sidebar.header("📁 Wczytywanie danych")
-orig_file = st.sidebar.file_uploader("Wybierz żagiel ORYGINALNY (CSV w mm)", type="csv")
-mod_file = st.sidebar.file_uploader("Wybierz żagiel ZMODYFIKOWANY (CSV w mm)", type="csv")
+orig_file = st.sidebar.file_uploader("Wybierz żagiel REFERENCYJNY", type="csv")
+mod_file = st.sidebar.file_uploader("Wybierz żagiel PORÓWNAWCZY", type="csv")
 
 if orig_file and mod_file:
     # Wczytanie plików wejściowych
@@ -179,7 +179,7 @@ if orig_file and mod_file:
         table_mod = analyze_profile_geometry_mm(df_mod, chords_mod)
 
         # --- ZAKŁADKI W INTERFEJSIE ---
-        tab1, tab2, tab3 = st.tabs(["📊 Porównanie 3D [mm]", "🔍 Wykres Różnicowy 3D [mm]", "📋 Parametry & Raport Excel"])
+        tab1, tab2, tab3 = st.tabs(["📊 Porównanie 3D [mm]", "🔍 Wykres różnicowy 3D [mm]", "📋 Parametry & raport Excel"])
 
         with tab1:
             st.header("Porównanie geometrii żagli (Wygładzone modele 3D)")
@@ -287,4 +287,4 @@ if orig_file and mod_file:
 
 else:
     # Komunikat startowy, gdy pliki nie zostały jeszcze wczytane
-    st.info("👈 Aby rozpocząć analizę, prześlij oba pliki CSV (Oryginalny oraz Zmodyfikowany) w panelu bocznym po lewej stronie.")
+    st.info("👈 Aby rozpocząć analizę, prześlij oba pliki CSV (Referencyjny oraz Porównawczy) w panelu bocznym po lewej stronie.")
