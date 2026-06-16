@@ -136,7 +136,7 @@ def analyze_profile_geometry_mm(df_data, chord_lengths):
 # --- INTERFEJS UŻYTKOWNIKA ---
 
 st.title("⛵ Analizator i komparator żagli 49er / FX 2D")
-st.markdown("Narzędzie dedykowane dla klas **49er** oraz **49er FX**. Porównuje dwa projekty żagli (Wizualizacja 3D Matplotlib) oraz oblicza parametry profili.")
+st.markdown("Narzędzie dedykowane dla klas **49er** oraz **49er FX**. Porównuje dwa projekty żagli (Wizualizacja 3D Matplotlib) oraz oblicza parametry profili. Autor: Mariusz Goliński")
 
 # Panel boczny - Przesyłanie plików
 st.sidebar.header("📁 Wczytywanie danych")
