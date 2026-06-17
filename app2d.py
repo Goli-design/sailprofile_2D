@@ -136,7 +136,7 @@ def analyze_profile_geometry_mm(df_data, chord_lengths):
 # --- INTERFEJS UŻYTKOWNIKA ---
 
 st.title("⛵ Analizator i komparator żagli 49er / FX 2D")
-st.markdown("Narzędzie dedykowane dla klas **49er** oraz **49er FX**. Porównuje dwa projekty żagli (Wizualizacja 3D Matplotlib) oraz oblicza parametry profili. Autor: Mariusz Goliński")
+st.markdown("Narzędzie dedykowane dla klas **49er** oraz **49er FX**. Porównuje dwa projekty żagli oraz oblicza parametry profili. Autor: Mariusz Goliński")
 
 # Panel boczny - Przesyłanie plików
 st.sidebar.header("📁 Wczytywanie danych")
@@ -192,7 +192,7 @@ if orig_file and mod_file:
             ax1 = fig_comp.add_subplot(1, 2, 1, projection='3d')
             surf1 = ax1.plot_surface(X_master, Y_master, Z_orig, cmap='viridis', 
                                      vmin=0, vmax=global_max_depth, edgecolor='none', alpha=0.9)
-            ax1.set_title(f'Oryginalny: {orig_name}', fontsize=14, pad=20)
+            ax1.set_title(f'Referencyjny: {orig_name}', fontsize=14, pad=20)
             # Box aspect z dokładnie dwukrotnym powiększeniem głębokości w skali mm
             ax1.set_box_aspect((np.nanmax(X_master), np.nanmax(Y_master), global_max_depth * 2.0))
             ax1.view_init(elev=25., azim=-135)
@@ -204,7 +204,7 @@ if orig_file and mod_file:
             ax2 = fig_comp.add_subplot(1, 2, 2, projection='3d')
             surf2 = ax2.plot_surface(X_master, Y_master, Z_mod, cmap='viridis', 
                                      vmin=0, vmax=global_max_depth, edgecolor='none', alpha=0.9)
-            ax2.set_title(f'Zmodyfikowany: {mod_name}', fontsize=14, pad=20)
+            ax2.set_title(f'Porównawczy: {mod_name}', fontsize=14, pad=20)
             ax2.set_box_aspect((np.nanmax(X_master), np.nanmax(Y_master), global_max_depth * 2.0))
             ax2.view_init(elev=25., azim=-135)
             ax2.set_xlabel('Odległość (mm)')
@@ -221,7 +221,7 @@ if orig_file and mod_file:
 
         with tab2:
             st.header("Trójwymiarowy Wykres Różnicowy")
-            st.write("Czerwony kolor oznacza miejsca, gdzie żagiel zmodyfikowany jest głębszy. Niebieski - gdzie jest płaski. Wszystkie osie w [mm].")
+            st.write("Czerwony kolor oznacza miejsca, gdzie żagiel zmodyfikowany jest płaski. Niebieski - gdzie jest głębszy. Wszystkie osie w [mm].")
             
             fig_diff = plt.figure(figsize=(11, 9))
             ax3 = fig_diff.add_subplot(1, 1, 1, projection='3d')
@@ -275,11 +275,11 @@ if orig_file and mod_file:
             
             col_t1, col_t2 = st.columns(2)
             with col_t1:
-                st.subheader(f"Oryginał: {orig_name}")
+                st.subheader(f"Referencja: {orig_name}")
                 st.dataframe(table_orig)
                 
             with col_t2:
-                st.subheader(f"Modyfikacja: {mod_name}")
+                st.subheader(f"Porównanie: {mod_name}")
                 st.dataframe(table_mod)
 
     except Exception as e:
