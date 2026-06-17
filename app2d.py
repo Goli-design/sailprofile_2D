@@ -221,7 +221,7 @@ if orig_file and mod_file:
 
         with tab2:
             st.header("Trójwymiarowy Wykres Różnicowy")
-            st.write("Czerwony kolor oznacza miejsca, gdzie żagiel zmodyfikowany jest płaski. Niebieski - gdzie jest głębszy. Wszystkie osie w [mm].")
+            st.write("Czerwony kolor oznacza miejsca, gdzie żagiel porównawczy jest głębszy. Niebieski - gdzie jest płaski. Wszystkie osie w [mm].")
             
             fig_diff = plt.figure(figsize=(11, 9))
             ax3 = fig_diff.add_subplot(1, 1, 1, projection='3d')
